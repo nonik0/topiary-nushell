@@ -8,7 +8,7 @@
     ...
   }: let
     systems = ["x86_64-linux" "aarch64-darwin"];
-    buildEachSystem = output: builtins.map output systems;
+    buildEachSystem = output: map output systems;
     buildAllSystems = output: (
       builtins.foldl' nixpkgs.lib.recursiveUpdate {} (buildEachSystem output)
     );
@@ -18,7 +18,7 @@
     in {
       packages.${system} = {
         topiary-nushell = pkgs.callPackage ./package.nix {
-          tree-sitter-nu = builtins.fetchGit {
+          tree-sitter-nu = fetchGit {
             url = "https://github.com/nushell/tree-sitter-nu";
             rev = "bb3f533e5792260291945e1f329e1f0a779def6e";
           };

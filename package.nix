@@ -5,7 +5,6 @@
   writeShellApplication,
   tree-sitter-nu ? fetchGit "https://github.com/nushell/tree-sitter-nu",
   topiary,
-  nushell,
   callPackage,
 }:
 writeShellApplication (
@@ -67,7 +66,6 @@ writeShellApplication (
   {
     name = "topiary-nushell";
     runtimeInputs = [
-      nushell
       topiary
     ];
     runtimeEnv = {
